@@ -7,7 +7,7 @@ body {
 .contenedor {
     width: 80%;
     margin: auto;
-    background: rgb(203, 131, 131);
+    background: rgb(215, 85, 85);
     padding: 20px;
 }
 
@@ -16,11 +16,11 @@ body {
 }
 
 h1, h2 {
-    color: #2c3e50;
+    color: #192f45;
 }
 
 img {
-    border-radius: 10px;
+    border-radius: 100px;
 }
 
 table {
