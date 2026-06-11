@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema web para el registro y administración de estudiantes.">
+    <title>Registro de Estudiantes</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="encabezado">
+        <div class="encabezado__contenido">
+            <div class="marca" aria-hidden="true">RE</div>
+            <div>
+                <p class="etiqueta">Gestión académica</p>
+                <h1>Registro de estudiantes</h1>
+                <p class="subtitulo">Administra la información estudiantil de forma rápida y segura.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenedor">
+        <section class="tarjeta tarjeta--formulario" aria-labelledby="titulo-formulario">
+            <div class="titulo-seccion">
+                <div>
+                    <p class="etiqueta">Datos personales y académicos</p>
+                    <h2 id="titulo-formulario">Nuevo estudiante</h2>
+                </div>
+                <span class="indicador-obligatorio">* Campos obligatorios</span>
+            </div>
+
+            <form id="formulario-estudiante" novalidate>
+                <input type="hidden" id="indice-edicion" value="">
+
+                <div class="cuadricula-formulario">
+                    <div class="grupo-campo">
+                        <label for="cedula">Cédula <span>*</span></label>
+                        <input type="text" id="cedula" name="cedula" inputmode="numeric"
+                            maxlength="10" placeholder="Ej. 0912345678" autocomplete="off">
+                        <small class="mensaje-error" id="error-cedula"></small>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="apellidos">Apellidos <span>*</span></label>
+                        <input type="text" id="apellidos" name="apellidos" maxlength="50"
+                            placeholder="Ej. Zambrano López" autocomplete="family-name">
+                        <small class="mensaje-error" id="error-apellidos"></small>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="nombres">Nombres <span>*</span></label>
+                        <input type="text" id="nombres" name="nombres" maxlength="50"
+                            placeholder="Ej. Andrea Sofía" autocomplete="given-name">
+                        <small class="mensaje-error" id="error-nombres"></small>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="direccion">Dirección <span>*</span></label>
+                        <input type="text" id="direccion" name="direccion" maxlength="100"
+                            placeholder="Ej. Av. Principal 123" autocomplete="street-address">
+                        <small class="mensaje-error" id="error-direccion"></small>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="telefono">Teléfono <span>*</span></label>
+                        <input type="tel" id="telefono" name="telefono" inputmode="numeric"
+                            maxlength="10" placeholder="Ej. 0987654321" autocomplete="tel">
+                        <small class="mensaje-error" id="error-telefono"></small>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="correo">Correo electrónico <span>*</span></label>
+                        <input type="email" id="correo" name="correo" maxlength="80"
+                            placeholder="estudiante@correo.com" autocomplete="email">
+                        <small class="mensaje-error" id="error-correo"></small>
+                    </div>
+
+                    <div class="grupo-campo grupo-campo--ancho">
+                        <label for="facultad">Facultad <span>*</span></label>
+                        <select id="facultad" name="facultad">
+                            <option value="">Seleccione una facultad</option>
+                            <option value="Ciencias Administrativas">Ciencias Administrativas</option>
+                            <option value="Ciencias de la Educación">Ciencias de la Educación</option>
+                            <option value="Ciencias de la Salud">Ciencias de la Salud</option>
+                            <option value="Ciencias Jurídicas">Ciencias Jurídicas</option>
+                            <option value="Ingeniería">Ingeniería</option>
+                        </select>
+                        <small class="mensaje-error" id="error-facultad"></small>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="nivel">Nivel <span>*</span></label>
+                        <select id="nivel" name="nivel">
+                            <option value="">Seleccione</option>
+                            <option value="1">Primer nivel</option>
+                            <option value="2">Segundo nivel</option>
+                            <option value="3">Tercer nivel</option>
+                            <option value="4">Cuarto nivel</option>
+                            <option value="5">Quinto nivel</option>
+                            <option value="6">Sexto nivel</option>
+                            <option value="7">Séptimo nivel</option>
+                            <option value="8">Octavo nivel</option>
+                            <option value="9">Noveno nivel</option>
+                            <option value="10">Décimo nivel</option>
+                        </select>
+                        <small class="mensaje-error" id="error-nivel"></small>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="paralelo">Paralelo <span>*</span></label>
+                        <input type="text" id="paralelo" name="paralelo" maxlength="1"
+                            placeholder="Ej. A" autocomplete="off">
+                        <small class="mensaje-error" id="error-paralelo"></small>
+                    </div>
+                </div>
+
+                <div class="acciones-formulario">
+                    <button class="boton boton--secundario oculto" type="button" id="boton-cancelar">
+                        Cancelar edición
+                    </button>
+                    <button class="boton boton--principal" type="submit" id="boton-guardar">
+                        Guardar estudiante
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="tarjeta" aria-labelledby="titulo-listado">
+            <div class="cabecera-listado">
+                <div>
+                    <p class="etiqueta">Registros almacenados</p>
+                    <h2 id="titulo-listado">Lista de estudiantes</h2>
+                </div>
+                <div class="contador" aria-live="polite">
+                    <strong id="total-estudiantes">0</strong>
+                    <span>estudiantes</span>
+                </div>
+            </div>
+
+            <div class="barra-busqueda">
+                <label class="solo-lectores" for="busqueda">Buscar estudiante</label>
+                <input type="search" id="busqueda"
+                    placeholder="Buscar por cédula, nombre, apellido o facultad...">
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cédula</th>
+                            <th>Estudiante</th>
+                            <th>Contacto</th>
+                            <th>Facultad</th>
+                            <th>Nivel</th>
+                            <th>Paralelo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla"></tbody>
+                </table>
+
+                <div class="estado-vacio" id="estado-vacio">
+                    <div class="estado-vacio__icono" aria-hidden="true">+</div>
+                    <h3>Aún no hay estudiantes registrados</h3>
+                    <p>Completa el formulario para agregar el primer registro.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="notificacion" id="notificacion" role="status" aria-live="polite"></div>
+
+    <div class="modal oculto" id="modal-confirmacion" role="dialog" aria-modal="true"
+        aria-labelledby="titulo-modal">
+        <div class="modal__contenido">
+            <div class="modal__icono" aria-hidden="true">!</div>
+            <h2 id="titulo-modal">Eliminar estudiante</h2>
+            <p>Esta acción eliminará el registro del almacenamiento local. ¿Deseas continuar?</p>
+            <div class="modal__acciones">
+                <button type="button" class="boton boton--secundario" id="modal-cancelar">Cancelar</button>
+                <button type="button" class="boton boton--peligro" id="modal-eliminar">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

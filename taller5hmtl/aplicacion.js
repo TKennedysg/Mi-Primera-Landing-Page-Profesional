@@ -3,7 +3,7 @@ const tituloTarea = document.getElementById('titulo-tarea');
 const descripcionTarea = document.getElementById('descripcion-tarea');
 const listaTareas = document.getElementById('lista-tareas');
 const btnExportarJson = document.getElementById('btn-exportar-json');
-const btnExportarXml = document.getElementById('btn-exportar-xml');
+const btnExportarXml = document.getElementById('btn-exportar-xml');D
 
 let coleccionTareas = JSON.parse(localStorage.getItem('tareasGuardadas')) || [];
 
